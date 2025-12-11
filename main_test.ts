@@ -51,16 +51,16 @@ Deno.test("letter frequency shift", () => {
 });
 
 Deno.bench("letter frequency", () => {
-  const actual = letterFrequency(text);
+  const actual = letterFrequency(text.repeat(100));
   assertEquals(actual.length, 21);
 });
 
 Deno.bench("letter frequency map", () => {
-  const actual = letterFrequencyMap(text);
+  const actual = letterFrequencyMap(text.repeat(100));
   assertEquals(actual.length, 21);
 });
 
 Deno.bench("letter frequency shift", () => {
-  const actual = letterFrequencyShift(text);
+  const actual = letterFrequencyShift(text.repeat(100));
   assertEquals(actual.length, 21);
 });
