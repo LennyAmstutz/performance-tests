@@ -17,6 +17,12 @@ export function findPrimes(limit) {
 }
 
 export function factorize(n) {
+  if (n < 1) {
+    throw new Error(`cannot factor {n}: only positive numbers allowed`);
+  }
+  if (n == 1) {
+    return [1];
+  }
   const primesUpToN = findPrimes(n);
   let [prime, ...primes] = primesUpToN;
   const factors = [];
