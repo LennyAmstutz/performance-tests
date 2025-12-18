@@ -7,3 +7,13 @@ export function unique(elements) {
   }
   return result;
 }
+
+export function diff(left, right) {
+  const result = [];
+  for (const l of left) {
+    if (!right.includes(l)) {
+      result.push(l);
+    }
+  }
+  return result;
+}
