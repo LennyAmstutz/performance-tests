@@ -38,21 +38,22 @@ const spamWords = [
   "xxx",
   "zero",
 ];
+const spamSet = new Set(spamWords);
+const wordRegex = /([a-z]+)/i;
 
 export function classify(message) {
   const words = message.split(" ");
   const nWords = words.length;
   let suspiciousWords = 0;
+
   for (const w of words) {
-    const pattern = new RegExp(/([a-z]+)/, "i");
-    const lettersOnly = w.match(pattern);
-    if (lettersOnly === null) {
-      continue;
-    }
-    const match = lettersOnly[0];
-    if (spamWords.includes(match.toLowerCase())) {
+    const match = w.match(wordRegex);
+    if (!match) continue;
+
+    if (spamSet.has(match[0].toLowerCase())) {
       suspiciousWords++;
     }
   }
+
   return suspiciousWords / nWords;
 }
