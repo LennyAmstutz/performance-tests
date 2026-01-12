@@ -5,15 +5,15 @@ export function unique(elements) {
       result.push(e);
     }
   }
-  return result;
+  return [...new Set(elements)];
 }
 
 export function diff(left, right) {
-  const result = [];
+  const rightSet = new Set(right);
   for (const l of left) {
     if (!right.includes(l)) {
       result.push(l);
     }
   }
-  return result;
+  return left.filter(e => !rightSet.has(e));
 }
